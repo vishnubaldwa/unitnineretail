@@ -1,14 +1,50 @@
 :root{--fontSans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--fontSerif:ui-serif,Georgia,Cambria,"Times New Roman",Times,serif;--fontMono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}#rl-app.fontArial{--fontSans:"Nimbus Sans L","Liberation sans","Arial Unicode MS",Arial,Helvetica,Garuda,Utkal,FreeSans,sans-serif}#rl-app.fontTahoma{--fontSans:"Luxi Sans",Tahoma,Loma,Geneva,Meera,sans-serif}#rl-app.fontTrebuchet{--fontSans:"DejaVu Sans Condensed",Trebuchet,"Trebuchet MS",sans-serif}#rl-app.fontLucida{--fontSans:"Lucida Sans Unicode","Lucida Sans","DejaVu Sans","Bitstream Vera Sans","DejaVu LGC Sans",sans-serif}#rl-app.fontVerdana{--fontSans:"DejaVu Sans",Verdana,Geneva,"Bitstream Vera Sans","DejaVu LGC Sans",sans-serif}#rl-app.fontMonoCourier{--fontMono:"Liberation Mono","Courier New",FreeMono,Courier,monospace}#rl-app.fontMonoLucida{--fontMono:"DejaVu Sans Mono","DejaVu LGC Sans Mono","Bitstream Vera Sans Mono","Lucida Console",Monaco,monospace}#rl-app.fontSerifTimes{--fontSerif:"Nimbus Roman No9 L","Times New Roman",Times,FreeSerif,serif}#rl-app.fontSerifPalatino{--fontSerif:"Bitstream Charter","Palatino Linotype",Palatino,Palladio,"URW Palladio L","Book Antiqua",Times,serif}#rl-app.fontSerifGeorgia{--fontSerif:"URW Palladio L",Georgia,Times,serif}body,html{margin:0;padding:0;-webkit-text-size-adjust:100%}#rl-app *,#rl-app ::after,#rl-app ::before{box-sizing:border-box}#rl-app{background-color:var(--main-bg-color,#aaa);color:var(--main-color,#333);font-family:var(--fontSans);-webkit-touch-callout:none;font-size:var(--main-font-size,14px);line-height:1.25;position:relative}body#rl-app{height:100vh;height:100dvh;width:100vw}#rl-BadBrowser,#rl-NoCookie,#rl-loading,#rl-loading-error{color:var(--loading-color,#000);text-shadow:var(--loading-text-shadow);font-size:214%;line-height:130%;position:fixed;text-align:center;top:50%;transform:translateY(-50%);width:100%}#rl-loading .icon-spinner{height:1em;width:1em}
 
-/* UNIT NINE RETAIL STYLES */
-#rl-app{background:radial-gradient(ellipse at 50% 0%,#1e293b 0%,#0f172a 100%)!important;background-image:none!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important}
+/* ================= UNIT NINE RETAIL MODERN THEME (GMAIL STYLE) ================= */
+#rl-app{background-color:#f6f8fc!important;background-image:none!important;color:#1e293b!important;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important}
+
+/* Sidebar */
+#rl-left{background-color:#f6f8fc!important;border-right:1px solid #e2e8f0!important;padding-top:8px!important}
+#rl-left .buttonCompose{background:#c2e7ff!important;color:#001d35!important;border:none!important;border-radius:16px!important;height:44px!important;max-height:44px!important;line-height:44px!important;padding:0 22px!important;font-size:14px!important;font-weight:700!important;box-shadow:0 1px 3px 0 rgba(60,64,67,.3),0 4px 8px 3px rgba(60,64,67,.15)!important;margin:8px 12px 14px 12px!important;cursor:pointer!important;transition:all .2s ease!important}
+#rl-left .buttonCompose:hover{background:#b3d7f5!important;box-shadow:0 2px 6px 2px rgba(60,64,67,.15),0 1px 2px 0 rgba(60,64,67,.3)!important;transform:translateY(-1px)!important}
+.b-folders{padding-right:0!important}
+.b-folders li a{border:none!important;border-radius:0 24px 24px 0!important;color:#444746!important;font-size:13.5px!important;font-weight:600!important;padding:0 16px 0 20px!important;margin-right:12px!important;height:36px!important;line-height:36px!important;transition:all .15s ease!important}
+.b-folders li a:hover{background-color:#eaebef!important;color:#1f1f1f!important}
+.b-folders li a.selectable.selected{background-color:#d3e3fd!important;color:#041e49!important;font-weight:800!important}
+.b-folders .b-footer{padding:10px 12px!important;border-top:1px solid #e2e8f0!important;background:transparent!important}
+.b-folders .b-footer .btn{background:#fff!important;border:1px solid #e2e8f0!important;border-radius:8px!important;color:#475569!important;padding:6px 10px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important}
+.b-folders .b-footer .btn:hover{background:#f1f5f9!important;color:#1e293b!important}
+
+/* Top Toolbar */
+.thm-message-list-top-toolbar,.top-toolbar,#rl-right .top-toolbar{background:#f6f8fc!important;border-bottom:1px solid #e2e8f0!important;padding:8px 12px!important}
+.top-toolbar .btn,.btn-toolbar .btn{background:#fff!important;border:1px solid #e2e8f0!important;border-radius:8px!important;color:#475569!important;font-size:13px!important;padding:6px 12px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important;margin:0 2px!important;transition:all .15s ease!important}
+.top-toolbar .btn:hover,.btn-toolbar .btn:hover{background:#f1f5f9!important;color:#1e293b!important;border-color:#cbd5e1!important}
+
+/* User Dropdown */
+#V-SystemDropDown{background:#fff!important;border:1px solid #e2e8f0!important;border-radius:20px!important;padding:4px 14px!important;color:#1e293b!important;font-size:13px!important;font-weight:600!important;box-shadow:0 1px 3px rgba(0,0,0,.06)!important;margin-right:12px!important;top:6px!important}
+#V-SystemDropDown .email-title{color:#1e293b!important}
+
+/* Middle Message List */
+#V-MailMessageList{background:#fff!important;border-radius:16px!important;border:1px solid #e2e8f0!important;margin:8px 6px 8px 6px!important;box-shadow:0 1px 3px rgba(0,0,0,.04)!important;overflow:hidden!important}
+.search-input-wrp{padding:8px 12px!important}
+.search-input-wrp input{background:#f1f5f9!important;border:1.5px solid transparent!important;border-radius:24px!important;padding:8px 16px!important;font-size:13.5px!important;color:#1e293b!important;transition:all .2s ease!important}
+.search-input-wrp input:focus{background:#fff!important;border-color:#2563eb!important;box-shadow:0 0 0 3px rgba(37,99,235,.12)!important}
+.messageListItem{border-bottom:1px solid #f1f5f9!important;padding:10px 12px!important;transition:background .15s ease!important}
+.messageListItem:hover{background:#f8fafc!important}
+.messageListItem.selected{background:#eff6ff!important}
+
+/* Right Message View */
+#V-MailMessageView{background:#fff!important;border-radius:16px!important;border:1px solid #e2e8f0!important;margin:8px 12px 8px 6px!important;box-shadow:0 1px 3px rgba(0,0,0,.04)!important;overflow:hidden!important}
+.messageViewEmptyDesc,#V-MailMessageView .empty-desc{color:#94a3b8!important;font-size:15px!important;font-weight:500!important}
+
+/* Login View */
 .LoginView{max-width:440px!important;margin:40px auto 20px auto!important;padding:0 16px!important}
 .LoginView .descWrapper{display:none!important}
 .unr-login-header{text-align:center;margin-bottom:24px}
 .unr-logo-badge{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%);color:#fff;border-radius:16px;box-shadow:0 10px 25px -5px rgba(37,99,235,.4);margin-bottom:12px}
-.unr-brand-title{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.5px;margin:0;line-height:1.2}
-.unr-brand-subtitle{font-size:13px;color:#94a3b8;margin:4px 0 0 0;font-weight:500}
-.LoginView form{background:#fff!important;border-radius:20px!important;box-shadow:0 25px 50px -12px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1)!important;padding:32px!important;color:#0f172a!important;margin:0!important}
+.unr-brand-title{font-size:24px;font-weight:800;color:#1e293b;letter-spacing:-.5px;margin:0;line-height:1.2}
+.unr-brand-subtitle{font-size:13px;color:#64748b;margin:4px 0 0 0;font-weight:500}
+.LoginView form{background:#fff!important;border-radius:20px!important;box-shadow:0 25px 50px -12px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05)!important;padding:32px!important;color:#0f172a!important;margin:0!important}
 .unr-input-group{margin-bottom:18px}
 .unr-input-label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#475569;margin-bottom:6px}
 .LoginView .controls input.unr-input,.LoginView .controls input{background:#f8fafc!important;border:1.5px solid #cbd5e1!important;border-radius:12px!important;color:#0f172a!important;font-size:14px!important;padding:12px 14px 12px 38px!important;box-shadow:none!important;transition:all .2s ease!important;width:100%!important;box-sizing:border-box!important}
