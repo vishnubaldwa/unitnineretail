@@ -1,0 +1,10 @@
+{
+    "cpanel_host": "127.0.0.1",
+    "cpanel_port": 2083,
+    "cpanel_user": "unitnineretail",
+    "cpanel_token": "MMBN79KXOE2BIWMYQXHBECPHSNHAEA4M",
+    "domain": "unitnineretail.com",
+    "admin_user": "admin",
+    "admin_pass": "UnitNine@2026",
+    "company_name": "Unit Nine Retail"
+}
