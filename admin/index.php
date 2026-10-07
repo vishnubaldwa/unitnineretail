@@ -62,7 +62,7 @@ $isLoggedIn = !empty($_SESSION['unr_admin_logged']);
         <form id="loginForm" class="space-y-5">
             <div>
                 <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Username</label>
-                <input type="text" id="loginUsername" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="admin" value="admin">
+                <input type="text" id="loginUsername" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="Enter username">
             </div>
             <div>
                 <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Password</label>
@@ -77,8 +77,7 @@ $isLoggedIn = !empty($_SESSION['unr_admin_logged']);
         </form>
 
         <div class="mt-8 pt-6 border-t border-slate-100 text-center">
-            <p class="text-xs text-slate-400">Default Password: <code class="bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-mono">UnitNine@2026</code></p>
-            <a href="/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-brand-600 hover:text-brand-700 font-medium mt-3">
+            <a href="/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-brand-600 hover:text-brand-700 font-medium">
                 <span>Open Employee Webmail</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
