@@ -44,10 +44,10 @@
 	--settings-menu-hover-bg-color: #eaebef;
 
 	/* MESSAGE LIST */
-	--message-list-toolbar-bg-color: #f6f8fc;
+	--message-list-toolbar-bg-color: #ffffff;
 }
 
-/* ================= GLOBAL APP STYLES (GMAIL LOOK) ================= */
+/* ================= GLOBAL APP STYLES (GMAIL / GOOGLE WORKSPACE LOOK) ================= */
 
 #rl-app {
 	background-color: #f6f8fc !important;
@@ -59,30 +59,75 @@
 /* ================= LEFT SIDEBAR (GMAIL STYLE) ================= */
 
 #rl-left {
+	width: 250px !important;
+	min-width: 250px !important;
+	max-width: 280px !important;
 	background-color: #f6f8fc !important;
-	border-right: 1px solid #e2e8f0 !important;
-	padding-top: 8px !important;
+	border-right: none !important;
+	padding: 0 !important;
 }
 
-/* Gmail Compose Button */
+/* Company Branding Header in Sidebar */
+.unr-sidebar-brand {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+	padding: 16px 20px 10px 20px !important;
+}
+
+.unr-sidebar-logo {
+	width: 36px !important;
+	height: 36px !important;
+	background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+	color: #ffffff !important;
+	font-weight: 800 !important;
+	font-size: 14px !important;
+	border-radius: 10px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3) !important;
+	flex-shrink: 0 !important;
+}
+
+.unr-sidebar-name {
+	font-size: 15px !important;
+	font-weight: 800 !important;
+	color: #0f172a !important;
+	letter-spacing: -0.3px !important;
+	white-space: nowrap !important;
+}
+
+#rl-left .b-toolbar {
+	padding: 6px 16px 14px 16px !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+}
+
+/* Gmail Signature Compose Button */
 #rl-left .buttonCompose {
 	background: #c2e7ff !important;
 	color: #001d35 !important;
 	border: none !important;
 	border-radius: 16px !important;
-	height: 44px !important;
-	max-height: 44px !important;
-	line-height: 44px !important;
+	height: 48px !important;
+	max-height: 48px !important;
+	line-height: 48px !important;
 	padding: 0 20px !important;
 	font-size: 14px !important;
 	font-weight: 700 !important;
 	box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15) !important;
+	cursor: pointer !important;
 	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-	margin: 8px 12px 14px 12px !important;
+	margin: 0 !important;
+	flex: 1 !important;
+	width: auto !important;
+	max-width: none !important;
 	display: inline-flex !important;
 	align-items: center !important;
-	gap: 8px !important;
-	cursor: pointer !important;
+	justify-content: center !important;
+	overflow: visible !important;
 }
 
 #rl-left .buttonCompose:hover {
@@ -91,7 +136,27 @@
 	transform: translateY(-1px) !important;
 }
 
-/* Folder List */
+#rl-left .buttonContacts {
+	background: #ffffff !important;
+	border: 1px solid #e2e8f0 !important;
+	border-radius: 14px !important;
+	height: 48px !important;
+	width: 48px !important;
+	line-height: 48px !important;
+	text-align: center !important;
+	font-size: 18px !important;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+#rl-left .buttonContacts:hover {
+	background: #f1f5f9 !important;
+	border-color: #cbd5e1 !important;
+}
+
+/* Folder List (Pill style) */
 .b-folders {
 	padding-right: 0 !important;
 }
@@ -102,11 +167,13 @@
 	color: #444746 !important;
 	font-size: 13.5px !important;
 	font-weight: 600 !important;
-	padding: 0 16px 0 20px !important;
+	padding: 0 16px 0 24px !important;
 	margin-right: 12px !important;
-	height: 36px !important;
-	line-height: 36px !important;
-	transition: all 0.15s ease !important;
+	height: 38px !important;
+	line-height: 38px !important;
+	display: flex !important;
+	align-items: center !important;
+	transition: background 0.15s ease !important;
 }
 
 .b-folders li a:hover {
@@ -120,9 +187,15 @@
 	font-weight: 800 !important;
 }
 
-/* Sidebar Footer (Settings / Folders icons) */
+.b-folders hr {
+	border: none !important;
+	border-top: 1px solid #e2e8f0 !important;
+	margin: 12px 16px !important;
+}
+
+/* Sidebar Footer */
 .b-folders .b-footer {
-	padding: 10px 12px !important;
+	padding: 12px 16px !important;
 	border-top: 1px solid #e2e8f0 !important;
 	background: transparent !important;
 }
@@ -132,9 +205,8 @@
 	border: 1px solid #e2e8f0 !important;
 	border-radius: 8px !important;
 	color: #475569 !important;
-	padding: 6px 10px !important;
+	padding: 6px 12px !important;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
-	transition: all 0.15s ease !important;
 }
 
 .b-folders .b-footer .btn:hover {
@@ -142,115 +214,161 @@
 	color: #1e293b !important;
 }
 
-/* ================= TOP TOOLBAR ================= */
+/* ================= RIGHT COLUMNS (CONTAINER) ================= */
 
-.thm-message-list-top-toolbar,
-.top-toolbar,
-#rl-right .top-toolbar {
+#rl-right:not([hidden]) {
 	background: #f6f8fc !important;
-	border-bottom: 1px solid #e2e8f0 !important;
-	padding: 8px 12px !important;
+	padding: 8px 16px 16px 0 !important;
+	gap: 12px !important;
+	display: flex !important;
 }
-
-.top-toolbar .btn,
-.btn-toolbar .btn {
-	background: #ffffff !important;
-	border: 1px solid #e2e8f0 !important;
-	border-radius: 8px !important;
-	color: #475569 !important;
-	font-size: 13px !important;
-	padding: 6px 12px !important;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
-	transition: all 0.15s ease !important;
-	margin: 0 2px !important;
-}
-
-.top-toolbar .btn:hover,
-.btn-toolbar .btn:hover {
-	background: #f1f5f9 !important;
-	color: #1e293b !important;
-	border-color: #cbd5e1 !important;
-}
-
-/* User Account Dropdown (Top Right) */
-#V-SystemDropDown {
-	background: #ffffff !important;
-	border: 1px solid #e2e8f0 !important;
-	border-radius: 20px !important;
-	padding: 4px 14px !important;
-	color: #1e293b !important;
-	font-size: 13px !important;
-	font-weight: 600 !important;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
-	margin-right: 12px !important;
-	top: 6px !important;
-}
-
-#V-SystemDropDown .email-title {
-	color: #1e293b !important;
-}
-
-/* ================= MESSAGE LIST COLUMN ================= */
 
 #V-MailMessageList {
 	background: #ffffff !important;
-	border-radius: 16px !important;
+	border-radius: 20px !important;
 	border: 1px solid #e2e8f0 !important;
-	margin: 8px 6px 8px 6px !important;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 	overflow: hidden !important;
+	display: flex !important;
+	flex-direction: column !important;
 }
 
-/* Search Input */
-.search-input-wrp {
+#V-MailMessageView {
+	background: #ffffff !important;
+	border-radius: 20px !important;
+	border: 1px solid #e2e8f0 !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+	overflow: hidden !important;
+	position: relative !important;
+}
+
+/* Action Toolbars (Gmail circular icons) */
+.btn-toolbar,
+.top-toolbar,
+.thm-message-list-top-toolbar {
+	background: #ffffff !important;
+	border-bottom: 1px solid #f1f5f9 !important;
 	padding: 8px 12px !important;
+	min-height: 48px !important;
+	display: flex !important;
+	align-items: center !important;
 }
 
-.search-input-wrp input {
+.btn-toolbar .btn,
+.top-toolbar .btn {
+	background: transparent !important;
+	border: none !important;
+	color: #5f6368 !important;
+	border-radius: 50% !important;
+	width: 36px !important;
+	height: 36px !important;
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	box-shadow: none !important;
+	margin: 0 2px !important;
+	font-size: 14px !important;
+	transition: background 0.15s ease !important;
+}
+
+.btn-toolbar .btn:hover,
+.top-toolbar .btn:hover {
 	background: #f1f5f9 !important;
-	border: 1.5px solid transparent !important;
+	color: #202124 !important;
+}
+
+/* Search Bar (Second Toolbar) */
+.second-toolbar {
+	background: #ffffff !important;
+	border-bottom: 1px solid #f1f5f9 !important;
+	padding: 8px 14px !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+}
+
+.second-toolbar .checkboxCheckAll {
+	color: #5f6368 !important;
+	font-size: 16px !important;
+	cursor: pointer !important;
+}
+
+.second-toolbar .search-input-wrp {
+	flex: 1 !important;
+	background: #f1f5f9 !important;
 	border-radius: 24px !important;
-	padding: 8px 16px !important;
-	font-size: 13.5px !important;
-	color: #1e293b !important;
+	padding: 6px 14px !important;
+	display: flex !important;
+	align-items: center !important;
+	border: 1.5px solid transparent !important;
 	transition: all 0.2s ease !important;
 }
 
-.search-input-wrp input:focus {
+.second-toolbar .search-input-wrp input {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	font-size: 13.5px !important;
+	color: #1e293b !important;
+	width: 100% !important;
+}
+
+.second-toolbar .search-input-wrp input:focus {
+	outline: none !important;
+}
+
+.second-toolbar .search-input-wrp:focus-within {
 	background: #ffffff !important;
 	border-color: #2563eb !important;
 	box-shadow: 0 0 0 3px rgba(37,99,235,0.12) !important;
 }
 
-/* Message List Rows */
-.messageListItem {
-	border-bottom: 1px solid #f1f5f9 !important;
-	padding: 10px 12px !important;
-	transition: background 0.15s ease !important;
+.second-toolbar .buttonMoreSearch {
+	background: transparent !important;
+	border: none !important;
+	color: #5f6368 !important;
+	border-radius: 50% !important;
+	width: 32px !important;
+	height: 32px !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	font-size: 10px !important;
 }
 
-.messageListItem:hover {
-	background: #f8fafc !important;
-}
-
-.messageListItem.selected {
-	background: #eff6ff !important;
-}
-
-/* ================= MESSAGE VIEW (RIGHT COLUMN) ================= */
-
-#V-MailMessageView {
+/* User Account Pill (Top Right) */
+#V-SystemDropDown {
 	background: #ffffff !important;
-	border-radius: 16px !important;
 	border: 1px solid #e2e8f0 !important;
-	margin: 8px 12px 8px 6px !important;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
-	overflow: hidden !important;
+	border-radius: 24px !important;
+	padding: 6px 14px !important;
+	color: #1e293b !important;
+	font-size: 13px !important;
+	font-weight: 600 !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+	top: 8px !important;
+	right: 16px !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 6px !important;
 }
 
-/* Clean Empty State */
+#V-SystemDropDown:hover {
+	background: #f8fafc !important;
+	border-color: #cbd5e1 !important;
+}
+
+#V-SystemDropDown .email-title {
+	color: #1e293b !important;
+	font-weight: 600 !important;
+}
+
+/* Empty List / Empty View State */
 .messageViewEmptyDesc,
-#V-MailMessageView .empty-desc {
+#V-MailMessageView .empty-desc,
+.listEmptyMessage {
 	color: #94a3b8 !important;
 	font-size: 15px !important;
 	font-weight: 500 !important;
