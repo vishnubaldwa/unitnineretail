@@ -1,5 +1,5 @@
-# Prevent direct access to config files
-<FilesMatch "^(config\.json|config\.php)$">
+# Prevent direct access to config and data files
+<FilesMatch "^(config\.json|config\.php|employees\.json)$">
     Order allow,deny
     Deny from all
 </FilesMatch>

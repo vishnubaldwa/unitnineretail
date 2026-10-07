@@ -72,18 +72,25 @@ if ($action === 'list') {
     if ($res['status'] == 1) {
         $accounts = [];
         $domain = $config['domain'];
+        $empFile = __DIR__ . '/employees.json';
+        $employees = file_exists($empFile) ? json_decode(file_get_contents($empFile), true) : [];
+        if (!is_array($employees)) {
+            $employees = [];
+        }
+
         foreach (($res['data'] ?? []) as $row) {
-            // Include accounts matching our domain or all
+            $email = $row['email'];
             $accounts[] = [
-                'email'         => $row['email'],
-                'login'         => $row['login'],
-                'domain'        => $row['domain'],
-                'diskused'      => $row['diskused'],
+                'email'           => $email,
+                'name'            => $employees[$email]['name'] ?? '',
+                'login'           => $row['login'],
+                'domain'          => $row['domain'],
+                'diskused'        => $row['diskused'],
                 'diskusedpercent' => $row['diskusedpercent'],
-                'diskquota'     => $row['diskquota'],
-                '_diskquota'    => $row['_diskquota'],
-                'suspended_in'  => !empty($row['suspended_incoming']),
-                'suspended_out' => !empty($row['suspended_outgoing']),
+                'diskquota'       => $row['diskquota'],
+                '_diskquota'      => $row['_diskquota'],
+                'suspended_in'    => !empty($row['suspended_incoming']),
+                'suspended_out'   => !empty($row['suspended_outgoing']),
             ];
         }
         json_resp(true, $accounts);
@@ -95,6 +102,7 @@ if ($action === 'list') {
 
 // 4. Create Account
 if ($action === 'create') {
+    $fullName    = trim($_POST['name'] ?? '');
     $emailPrefix = strtolower(trim($_POST['email'] ?? ''));
     $password    = $_POST['password'] ?? '';
     $quota       = intval($_POST['quota'] ?? 1024); // default 1024 MB
@@ -116,8 +124,23 @@ if ($action === 'create') {
 
     $res = $cpanel->createAccount($emailPrefix, $password, $quota, $domain);
     if ($res['status'] == 1) {
+        $fullEmail = "{$emailPrefix}@{$domain}";
+
+        // Store employee metadata
+        $empFile = __DIR__ . '/employees.json';
+        $employees = file_exists($empFile) ? json_decode(file_get_contents($empFile), true) : [];
+        if (!is_array($employees)) {
+            $employees = [];
+        }
+        $employees[$fullEmail] = [
+            'name'       => $fullName,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        file_put_contents($empFile, json_encode($employees, JSON_PRETTY_PRINT));
+
         json_resp(true, [
-            'email'    => "{$emailPrefix}@{$domain}",
+            'name'     => $fullName,
+            'email'    => $fullEmail,
             'password' => $password,
             'quota'    => $quota,
             'webmail'  => "https://{$domain}/"
@@ -128,7 +151,27 @@ if ($action === 'create') {
     }
 }
 
-// 5. Delete Account
+// 5. Update Employee Details (Name)
+if ($action === 'update_employee') {
+    $email = trim($_POST['email'] ?? '');
+    $name  = trim($_POST['name'] ?? '');
+
+    $empFile = __DIR__ . '/employees.json';
+    $employees = file_exists($empFile) ? json_decode(file_get_contents($empFile), true) : [];
+    if (!is_array($employees)) {
+        $employees = [];
+    }
+
+    if (!isset($employees[$email])) {
+        $employees[$email] = ['created_at' => date('Y-m-d H:i:s')];
+    }
+    $employees[$email]['name'] = $name;
+    file_put_contents($empFile, json_encode($employees, JSON_PRETTY_PRINT));
+
+    json_resp(true, ['message' => 'Employee details updated successfully']);
+}
+
+// 6. Delete Account
 if ($action === 'delete') {
     $email = trim($_POST['email'] ?? '');
     $parts = explode('@', $email);
@@ -137,6 +180,14 @@ if ($action === 'delete') {
 
     $res = $cpanel->deleteAccount($user, $domain);
     if ($res['status'] == 1) {
+        $empFile = __DIR__ . '/employees.json';
+        if (file_exists($empFile)) {
+            $employees = json_decode(file_get_contents($empFile), true) ?: [];
+            if (isset($employees[$email])) {
+                unset($employees[$email]);
+                file_put_contents($empFile, json_encode($employees, JSON_PRETTY_PRINT));
+            }
+        }
         json_resp(true, ['message' => "Account {$email} deleted successfully"]);
     } else {
         $err = !empty($res['errors']) ? implode(', ', $res['errors']) : 'Failed to delete account.';

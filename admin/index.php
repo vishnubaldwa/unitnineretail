@@ -213,7 +213,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/70 shadow-sm mb-6">
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div class="relative flex-1 max-w-md">
-                    <input type="text" id="searchInput" oninput="filterAccounts()" placeholder="Search employees by email..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                    <input type="text" id="searchInput" oninput="filterAccounts()" placeholder="Search employees by name or email..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
                     <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
 
@@ -236,7 +236,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
                 <table class="w-full text-left text-sm">
                     <thead class="bg-slate-50/75 border-b border-slate-200/70 text-xs font-semibold uppercase tracking-wider text-slate-500">
                         <tr>
-                            <th class="px-6 py-4">Employee Email</th>
+                            <th class="px-6 py-4">Employee / Email</th>
                             <th class="px-6 py-4">Storage Usage</th>
                             <th class="px-6 py-4">Status</th>
                             <th class="px-6 py-4 text-right">Actions</th>
@@ -271,6 +271,11 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         <div id="createAlert" class="hidden mb-4 p-3 rounded-xl text-sm bg-rose-50 text-rose-700 border border-rose-100"></div>
 
         <form id="createEmailForm" class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Employee Full Name</label>
+                <input type="text" id="newEmployeeName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+            </div>
+
             <div>
                 <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Email Address</label>
                 <div class="flex rounded-xl shadow-sm">
@@ -321,7 +326,8 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         <h3 class="text-xl font-bold text-slate-900 mb-1">Mailbox Created!</h3>
         <p class="text-xs text-slate-500 mb-6">Account is live and ready for use.</p>
 
-        <div class="bg-slate-50 rounded-xl p-4 text-left space-y-2 mb-6 border border-slate-100 text-xs font-mono">
+        <div class="bg-slate-50 rounded-xl p-4 text-left space-y-2.5 mb-6 border border-slate-100 text-xs font-mono">
+            <div><span class="text-slate-400">Employee:</span> <strong id="succName" class="text-slate-800"></strong></div>
             <div><span class="text-slate-400">Email:</span> <strong id="succEmail" class="text-slate-800"></strong></div>
             <div><span class="text-slate-400">Password:</span> <strong id="succPass" class="text-slate-800"></strong></div>
             <div><span class="text-slate-400">Webmail:</span> <a href="/" target="_blank" class="text-brand-600 underline">https://<?= htmlspecialchars($config['domain']) ?>/</a></div>
@@ -392,7 +398,35 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     </div>
 </div>
 
-<!-- 5. Admin Settings Modal -->
+<!-- 5. Edit Employee Details Modal -->
+<div id="editEmpModal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-lg font-bold text-slate-900">Edit Employee Details</h3>
+            <button onclick="closeModal('editEmpModal')" class="text-slate-400 hover:text-slate-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <p id="editEmpEmail" class="text-xs text-slate-500 mb-5 font-mono"></p>
+
+        <form id="editEmpForm" class="space-y-4">
+            <input type="hidden" id="editEmpTarget">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Employee Full Name</label>
+                <input type="text" id="editEmpName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+            </div>
+
+            <div class="pt-4 flex items-center justify-end gap-3">
+                <button type="button" onclick="closeModal('editEmpModal')" class="px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-100 rounded-xl">Cancel</button>
+                <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm shadow-md shadow-brand-500/20">
+                    Save Details
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 6. Admin Settings Modal -->
 <div id="adminSettingsModal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
         <h3 class="text-lg font-bold text-slate-900 mb-1">Admin Portal Settings</h3>
@@ -454,13 +488,24 @@ function updateStats(accounts) {
     document.getElementById('statTotalDisk').textContent = totalDiskMB.toFixed(1) + ' MB';
 }
 
+function getInitials(name, email) {
+    if (name && name.trim()) {
+        const parts = name.trim().split(/\s+/);
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[1][0]).toUpperCase();
+        }
+        return parts[0].substring(0, 2).toUpperCase();
+    }
+    return email.substring(0, 2).toUpperCase();
+}
+
 function renderAccounts(accounts) {
     const tbody = document.getElementById('accountsTableBody');
     if (!accounts.length) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="4" class="px-6 py-12 text-center text-slate-400">
-                    <p class="font-medium text-slate-600 mb-1">No email accounts yet</p>
+                    <p class="font-medium text-slate-600 mb-1">No email accounts found</p>
                     <p class="text-xs">Click "Create New Email ID" to create your first employee mailbox.</p>
                 </td>
             </tr>`;
@@ -475,17 +520,24 @@ function renderAccounts(accounts) {
 
         const isSuspended = acc.suspended_in || acc.suspended_out;
         const quotaText = (acc.diskquota == 0 || acc.diskquota == '0') ? 'Unlimited' : acc.diskquota + ' MB';
+        const escapedName = (acc.name || '').replace(/'/g, "\\'");
 
         return `
             <tr class="hover:bg-slate-50/80 transition-colors">
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-bold flex items-center justify-center text-xs uppercase">
-                            ${acc.email.substring(0, 2)}
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white font-bold flex items-center justify-center text-xs shadow-sm uppercase tracking-wider shrink-0">
+                            ${getInitials(acc.name, acc.email)}
                         </div>
-                        <div>
-                            <span class="font-semibold text-slate-900 block">${acc.email}</span>
-                            <span class="text-xs text-slate-400">Login: ${acc.login || acc.email}</span>
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-900 text-sm truncate">${acc.name || acc.email.split('@')[0]}</span>
+                                ${acc.name ? 
+                                    `<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100">Employee</span>` : 
+                                    `<button onclick="openEditEmpModal('${acc.email}', '')" class="text-[11px] text-brand-600 hover:underline font-medium">+ Add Name</button>`
+                                }
+                            </div>
+                            <span class="text-xs text-slate-400 font-mono block truncate">${acc.email}</span>
                         </div>
                     </div>
                 </td>
@@ -508,13 +560,16 @@ function renderAccounts(accounts) {
                 </td>
                 <td class="px-6 py-4 text-right">
                     <div class="inline-flex items-center gap-1.5">
-                        <button onclick="openResetModal('${acc.email}')" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg" title="Change Password">
+                        <button onclick="openEditEmpModal('${acc.email}', '${escapedName}')" class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors" title="Edit Employee Name">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </button>
+                        <button onclick="openResetModal('${acc.email}')" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" title="Change Password">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
                         </button>
-                        <button onclick="openQuotaModal('${acc.email}', '${acc.diskquota}')" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg" title="Change Quota">
+                        <button onclick="openQuotaModal('${acc.email}', '${acc.diskquota}')" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" title="Change Quota">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg>
                         </button>
-                        <button onclick="deleteAccount('${acc.email}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg" title="Delete Mailbox">
+                        <button onclick="deleteAccount('${acc.email}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" title="Delete Mailbox">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </button>
                     </div>
@@ -525,8 +580,12 @@ function renderAccounts(accounts) {
 }
 
 function filterAccounts() {
-    const q = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = allAccounts.filter(acc => acc.email.toLowerCase().includes(q));
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    const filtered = allAccounts.filter(acc => {
+        const emailMatch = acc.email && acc.email.toLowerCase().includes(q);
+        const nameMatch = acc.name && acc.name.toLowerCase().includes(q);
+        return emailMatch || nameMatch;
+    });
     renderAccounts(filtered);
 }
 
@@ -544,11 +603,37 @@ function generatePassword(targetId) {
 function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
 function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
+let emailManuallyEdited = false;
+document.getElementById('newEmailPrefix')?.addEventListener('input', () => {
+    emailManuallyEdited = true;
+});
+
+document.getElementById('newEmployeeName')?.addEventListener('input', (e) => {
+    if (!emailManuallyEdited) {
+        const clean = e.target.value.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+        if (clean) {
+            const parts = clean.split(/\s+/);
+            document.getElementById('newEmailPrefix').value = parts.join('.');
+        } else {
+            document.getElementById('newEmailPrefix').value = '';
+        }
+    }
+});
+
 function openCreateModal() {
+    emailManuallyEdited = false;
+    document.getElementById('newEmployeeName').value = '';
     document.getElementById('newEmailPrefix').value = '';
     generatePassword('newEmailPass');
     document.getElementById('createAlert').classList.add('hidden');
     openModal('createModal');
+}
+
+function openEditEmpModal(email, currentName) {
+    document.getElementById('editEmpTarget').value = email;
+    document.getElementById('editEmpEmail').textContent = email;
+    document.getElementById('editEmpName').value = currentName || '';
+    openModal('editEmpModal');
 }
 
 function openResetModal(email) {
@@ -578,12 +663,14 @@ document.getElementById('createEmailForm').addEventListener('submit', async (e) 
     btn.textContent = 'Creating...';
     alertBox.classList.add('hidden');
 
-    const email = document.getElementById('newEmailPrefix').value;
+    const name = document.getElementById('newEmployeeName').value.trim();
+    const email = document.getElementById('newEmailPrefix').value.trim();
     const password = document.getElementById('newEmailPass').value;
     const quota = document.getElementById('newEmailQuota').value;
 
     const fd = new FormData();
     fd.append('action', 'create');
+    fd.append('name', name);
     fd.append('email', email);
     fd.append('password', password);
     fd.append('quota', quota);
@@ -593,6 +680,7 @@ document.getElementById('createEmailForm').addEventListener('submit', async (e) 
         const data = await res.json();
         if (data.success) {
             closeModal('createModal');
+            document.getElementById('succName').textContent = data.data.name || name || 'Employee';
             document.getElementById('succEmail').textContent = data.data.email;
             document.getElementById('succPass').textContent = data.data.password;
             openModal('successModal');
@@ -610,11 +698,33 @@ document.getElementById('createEmailForm').addEventListener('submit', async (e) 
     }
 });
 
+// Edit Employee Form Handler
+document.getElementById('editEmpForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('editEmpTarget').value;
+    const name = document.getElementById('editEmpName').value.trim();
+
+    const fd = new FormData();
+    fd.append('action', 'update_employee');
+    fd.append('email', email);
+    fd.append('name', name);
+
+    const res = await fetch('api.php', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (data.success) {
+        closeModal('editEmpModal');
+        loadAccounts();
+    } else {
+        alert(data.error || 'Failed to update employee details');
+    }
+});
+
 // Copy Credentials for WhatsApp
 function copyCredentialsWhatsApp() {
-    const email = document.getElementById('succEmail').textContent;
-    const pass = document.getElementById('succPass').textContent;
-    const text = `Welcome to Unit Nine Retail!\n\nYour official work email has been created:\n📧 Email: ${email}\n🔑 Password: ${pass}\n🌐 Login Webmail: https://<?= htmlspecialchars($config['domain']) ?>/\n\nPlease log in and keep your password safe.`;
+    const name = document.getElementById('succName').textContent.trim() || 'Employee';
+    const email = document.getElementById('succEmail').textContent.trim();
+    const pass = document.getElementById('succPass').textContent.trim();
+    const text = `Hi ${name},\n\nWelcome to Unit Nine Retail!\nYour official corporate email account has been created:\n\n📧 Email: ${email}\n🔑 Password: ${pass}\n🌐 Webmail Login: https://<?= htmlspecialchars($config['domain']) ?>/\n\nPlease log in and keep your password safe.`;
     navigator.clipboard.writeText(text);
     alert('Copied to clipboard! You can paste and send directly to the employee via WhatsApp or Email.');
 }

@@ -54,6 +54,14 @@ class Identities extends AbstractProvider
 			$identities[] = $primaryIdentity;
 		}
 
+		$empFile = \dirname(__DIR__, 6) . '/admin/employees.json';
+		if (\is_file($empFile) && !$primaryIdentity->Name()) {
+			$emps = \json_decode(\file_get_contents($empFile), true);
+			if (!empty($emps[$account->Email()]['name'])) {
+				$primaryIdentity->SetName($emps[$account->Email()]['name']);
+			}
+		}
+
 		// Return only primary identity or all identities
 		return $allowMultipleIdentities ? $identities : [$primaryIdentity];
 	}
