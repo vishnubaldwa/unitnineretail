@@ -1,54 +1,251 @@
-
 :root {
 	color-scheme: light;
 
 	/* MAIN */
-	--main-color: #333;
-	--main-bg-color: #48525C;
-	--main-bg-image: url("images/background.jpg");
+	--main-color: #334155;
+	--main-bg-color: #0f172a;
+	--main-bg-image: none;
 
 	/* LOADING */
-	--loading-color: #ddd;
-	--loading-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+	--loading-color: #f8fafc;
+	--loading-text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 
 	/* LOGIN */
-	--login-color: #eee;
-	--login-bg-color: rgba(0,0,0,0.5);
-	--login-box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
-	--login-border: none;
-	--login-border-radius: 7px;
+	--login-color: #0f172a;
+	--login-bg-color: #ffffff;
+	--login-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+	--login-border: 1px solid #e2e8f0;
+	--login-border-radius: 20px;
 
 	/* MENU */
-	--dropdown-menu-color: #333;
-	--dropdown-menu-bg-color: #fff;
-	--dropdown-menu-hover-bg-color: #48525C;
-	--dropdown-menu-hover-color: #eee;
-	--dropdown-menu-disable-color: #999;
+	--dropdown-menu-color: #1e293b;
+	--dropdown-menu-bg-color: #ffffff;
+	--dropdown-menu-hover-bg-color: #f1f5f9;
+	--dropdown-menu-hover-color: #2563eb;
+	--dropdown-menu-disable-color: #94a3b8;
 
 	/* FOLDERS */
-	--folders-color: #fff;
-	--folders-disabled-color: #aaa;
-	--folders-selected-color: #fff;
-	--folders-selected-bg-color: rgba(0,0,0,0.5);
-	--folders-focused-color: #fff;
-	--folders-focused-bg-color: rgba(0,0,0,0.7);
-	--folders-hover-color: #fff;
-	--folders-hover-bg-color: rgba(0,0,0,0.5);
-	--folders-drop-color: #fff;
-	--folders-drop-bg-color: rgba(0,0,0,0.5);
+	--folders-color: #f8fafc;
+	--folders-disabled-color: #64748b;
+	--folders-selected-color: #ffffff;
+	--folders-selected-bg-color: #2563eb;
+	--folders-focused-color: #ffffff;
+	--folders-focused-bg-color: #1d4ed8;
+	--folders-hover-color: #ffffff;
+	--folders-hover-bg-color: rgba(255, 255, 255, 0.08);
+	--folders-drop-color: #ffffff;
+	--folders-drop-bg-color: #2563eb;
 
 	/* SETTINGS */
-	--settings-menu-color: #fff;
-	--settings-menu-selected-color: #fff;
-	--settings-menu-selected-bg-color: rgba(0,0,0,0.5);
-	--settings-menu-hover-color: #fff;
-	--settings-menu-hover-bg-color: rgba(0,0,0,0.5);
+	--settings-menu-color: #f8fafc;
+	--settings-menu-selected-color: #ffffff;
+	--settings-menu-selected-bg-color: #2563eb;
+	--settings-menu-hover-color: #ffffff;
+	--settings-menu-hover-bg-color: rgba(255, 255, 255, 0.08);
 
 	/* MESSAGE LIST */
-	--message-list-toolbar-bg-color: #eee;
+	--message-list-toolbar-bg-color: #f8fafc;
 }
 
-.thm-message-list-top-toolbar, .thm-message-list-bottom-toolbar {
-    background-image: linear-gradient(to bottom, #f4f4f4, #dfdfdf) !important;
-    background-repeat: repeat-x !important;
+/* Modern App Background */
+#rl-app {
+	background: radial-gradient(ellipse at 50% 0%, #1e293b 0%, #0f172a 100%) !important;
+	font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* ================= MODERN UNIT NINE RETAIL LOGIN ================= */
+
+.LoginView {
+	max-width: 440px !important;
+	margin: 40px auto 20px auto !important;
+	padding: 0 16px !important;
+}
+
+.LoginView .descWrapper {
+	display: none !important;
+}
+
+/* Corporate Header */
+.unr-login-header {
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+.unr-logo-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+	color: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+	margin-bottom: 12px;
+}
+
+.unr-brand-title {
+	font-size: 24px;
+	font-weight: 800;
+	color: #ffffff;
+	letter-spacing: -0.5px;
+	margin: 0;
+	line-height: 1.2;
+}
+
+.unr-brand-subtitle {
+	font-size: 13px;
+	color: #94a3b8;
+	margin: 4px 0 0 0;
+	font-weight: 500;
+}
+
+/* Login Card Form */
+.LoginView form {
+	background: #ffffff !important;
+	border-radius: 20px !important;
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+	padding: 32px !important;
+	color: #0f172a !important;
+	margin: 0 !important;
+}
+
+.unr-input-group {
+	margin-bottom: 18px;
+}
+
+.unr-input-label {
+	display: block;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	color: #475569;
+	margin-bottom: 6px;
+}
+
+.LoginView .controls {
+	position: relative;
+	margin-bottom: 0 !important;
+}
+
+.LoginView .controls input.unr-input,
+.LoginView .controls input {
+	background: #f8fafc !important;
+	border: 1.5px solid #e2e8f0 !important;
+	border-radius: 12px !important;
+	color: #0f172a !important;
+	font-size: 14px !important;
+	padding: 12px 14px 12px 38px !important;
+	box-shadow: none !important;
+	transition: all 0.2s ease !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.LoginView .controls input:focus {
+	background: #ffffff !important;
+	border-color: #2563eb !important;
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+	outline: none !important;
+}
+
+.LoginView .controls > .fontastic:first-child {
+	position: absolute;
+	left: 12px;
+	top: 13px;
+	font-size: 14px;
+	color: #94a3b8;
+	pointer-events: none;
+}
+
+/* Checkbox Row */
+.unr-checkbox-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 16px 0 20px 0 !important;
+}
+
+.LoginView .e-checkbox {
+	color: #64748b !important;
+	font-size: 13px !important;
+	font-weight: 500 !important;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+}
+
+.LoginView .e-checkbox i {
+	font-size: 15px;
+	color: #2563eb;
+}
+
+.LoginView .language-button {
+	color: #64748b !important;
+	text-decoration: none;
+}
+
+/* Sign In Button */
+.unr-btn-wrapper {
+	margin-top: 10px;
+}
+
+.LoginView .buttonLogin,
+.unr-submit-btn {
+	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+	color: #ffffff !important;
+	font-size: 14px !important;
+	font-weight: 700 !important;
+	padding: 14px 20px !important;
+	border: none !important;
+	border-radius: 12px !important;
+	width: 100% !important;
+	cursor: pointer !important;
+	box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.35) !important;
+	transition: all 0.2s ease !important;
+	text-align: center;
+}
+
+.LoginView .buttonLogin:hover,
+.unr-submit-btn:hover {
+	background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+	box-shadow: 0 12px 24px -5px rgba(37, 99, 235, 0.45) !important;
+	transform: translateY(-1px);
+}
+
+/* Footer link to admin */
+.unr-footer-links {
+	text-align: center;
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #f1f5f9;
+}
+
+.unr-link-admin {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 12px;
+	color: #64748b;
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.2s ease;
+}
+
+.unr-link-admin:hover {
+	color: #2563eb;
+	text-decoration: underline;
+}
+
+/* Alerts */
+.LoginView .alert {
+	background: #fef2f2 !important;
+	border: 1px solid #fee2e2 !important;
+	color: #b91c1c !important;
+	border-radius: 12px !important;
+	padding: 12px 14px !important;
+	font-size: 13px !important;
+	margin-bottom: 16px !important;
 }

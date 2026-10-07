@@ -1,4 +1,16 @@
-<div class="descWrapper" data-bind="visible: '' !== loadingDesc, text: loadingDesc"></div>
+<div class="unr-login-header">
+	<div class="unr-logo-badge">
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+			<polyline points="22,6 12,13 2,6"></polyline>
+		</svg>
+	</div>
+	<h1 class="unr-brand-title">Unit Nine Retail</h1>
+	<p class="unr-brand-subtitle">Official Employee Mailbox</p>
+</div>
+
+<div class="descWrapper" style="display:none !important;" data-bind="visible: false, text: loadingDesc"></div>
+
 <div class="alert" data-bind="hidden: !submitError()" hidden="">
 	<a href="#" class="close" data-bind="click: hideError">×</a>
 	<span data-bind="text: submitError"></span>
@@ -7,24 +19,35 @@
 		<!-- ko text: submitErrorAdditional --><!-- /ko -->
 	</p>
 </div>
-<form action="#/"  spellcheck="false" method="POST"
+
+<form action="#/" spellcheck="false" method="POST"
 	data-bind="submit: submitForm, css: {'errorAnimated': formError, 'submitting': submitRequest()}">
-	<div class="controls" data-bind="css: {'error': emailError}">
-		<span class="fontastic">✉</span>
-		<input name="Email" required="" type="text" class="input-block-level" pattern="[^@\s]+(@[^\s]+)?" inputmode="email"
-			autofocus="" autocomplete="email" autocorrect="off" autocapitalize="off"
-			data-bind="textInput: email, disable: submitRequest"
-			data-i18n="[placeholder]GLOBAL/EMAIL">
+	
+	<div class="unr-input-group">
+		<label class="unr-input-label">Work Email</label>
+		<div class="controls" data-bind="css: {'error': emailError}">
+			<span class="fontastic">✉</span>
+			<input name="Email" required="" type="text" class="input-block-level unr-input" pattern="[^@\s]+(@[^\s]+)?" inputmode="email"
+				autofocus="" autocomplete="email" autocorrect="off" autocapitalize="off"
+				placeholder="username@unitnineretail.com"
+				data-bind="textInput: email, disable: submitRequest">
+		</div>
 	</div>
-	<div class="controls" data-bind="css: {'error': passwordError}">
-		<span class="fontastic">🔑</span>
-		<input name="Password" required="" type="password" class="input-block-level"
-			autocomplete="current-password" autocorrect="off" autocapitalize="off"
-			data-bind="textInput: password, disable: submitRequest"
-			data-i18n="[placeholder]GLOBAL/PASSWORD">
+
+	<div class="unr-input-group">
+		<label class="unr-input-label">Password</label>
+		<div class="controls" data-bind="css: {'error': passwordError}">
+			<span class="fontastic">🔑</span>
+			<input name="Password" required="" type="password" class="input-block-level unr-input"
+				autocomplete="current-password" autocorrect="off" autocapitalize="off"
+				placeholder="••••••••••••"
+				data-bind="textInput: password, disable: submitRequest">
+		</div>
 	</div>
+
 	<div id="plugin-Login-BottomControlGroup"></div>
-	<div class="controls" style="display: flex">
+
+	<div class="controls unr-checkbox-row">
 		<div class="e-checkbox" tabindex="0" data-bind="toggle: signMe">
 			<i role="checkbox" class="fontastic" data-bind="text: signMe() ? '☑' : '☐'"></i>
 			<span data-i18n="LOGIN/LABEL_SIGN_ME"></span>
@@ -37,9 +60,17 @@
 			</a>
 		</div>
 	</div>
-	<div>
-		<button class="btn btn-large buttonLogin"
-			data-bind="command: submitCommand"
-			data-i18n="LOGIN/BUTTON_SIGN_IN"></button>
+
+	<div class="unr-btn-wrapper">
+		<button class="btn btn-large buttonLogin unr-submit-btn"
+			data-bind="command: submitCommand">
+			Sign In to Mailbox
+		</button>
+	</div>
+
+	<div class="unr-footer-links">
+		<a href="/admin" target="_blank" class="unr-link-admin">
+			<span>⚙️ Admin Portal</span>
+		</a>
 	</div>
 </form>
