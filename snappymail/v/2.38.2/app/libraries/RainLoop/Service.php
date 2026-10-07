@@ -198,7 +198,8 @@ abstract class Service
 			// https://github.com/the-djmaze/snappymail/issues/1024
 //			$oActions->verifyCacheByKey($sCacheFileName);
 
-			if ($oConfig->Get('cache', 'system_data', true)) {
+			// Disabled template cache so custom branding and styles always render live
+			if (false) {
 				$sResult = $oActions->Cacher()->Get($sCacheFileName);
 			} else {
 				$sResult = '';
