@@ -5006,12 +5006,14 @@
 		onShow() {
 			elementById('rl-left').hidden = true;
 			elementById('rl-right').hidden = true;
+			const ft = elementById('unr-main-footer'); if (ft) ft.style.display = 'block';
 			rl.route.off();
 		}
 
 		onHide() {
 			elementById('rl-left').hidden = false;
 			elementById('rl-right').hidden = false;
+			const ft = elementById('unr-main-footer'); if (ft) ft.style.display = 'none';
 		}
 
 		submitForm() {

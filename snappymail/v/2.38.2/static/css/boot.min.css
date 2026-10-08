@@ -74,7 +74,8 @@
 .unr-footer-links{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #f1f5f9}
 .unr-link-admin{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#64748b;text-decoration:none;font-weight:600}
 .unr-link-admin:hover{color:#2563eb;text-decoration:underline}
-.unr-login-bottom-footer{position:fixed!important;bottom:0!important;left:0!important;right:0!important;width:100vw!important;max-width:100vw!important;background:#fff!important;border-top:1px solid #e2e8f0!important;border-bottom:none!important;border-left:none!important;border-right:none!important;border-radius:0!important;box-shadow:0 -1px 3px 0 rgba(0,0,0,.02)!important;padding:14px 32px!important;margin:0!important;z-index:9999!important;box-sizing:border-box!important}
+#unr-main-footer,.unr-login-bottom-footer{position:fixed!important;bottom:0!important;left:0!important;right:0!important;width:100%!important;background:#fff!important;border-top:1px solid #e2e8f0!important;border-bottom:none!important;border-left:none!important;border-right:none!important;border-radius:0!important;box-shadow:0 -1px 3px 0 rgba(0,0,0,.02)!important;padding:14px 32px!important;margin:0!important;z-index:99999!important;display:block!important;box-sizing:border-box!important}
+body:has(#rl-left:not([hidden])) #unr-main-footer,body:has(#rl-right:not([hidden])) #unr-main-footer{display:none!important}
 .unr-login-footer-inner{width:100%!important;max-width:1400px!important;margin:0 auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;box-sizing:border-box!important}
 .unr-login-footer-copy{color:#64748b!important;font-size:12px!important;line-height:1.5!important;white-space:nowrap!important}
 .unr-login-footer-badge{display:inline-flex!important;align-items:center!important;gap:6px!important;background:#f1f5f9!important;padding:4px 14px!important;border-radius:9999px!important;font-weight:500!important;color:#475569!important;font-size:11px!important;white-space:nowrap!important;box-shadow:0 1px 2px rgba(0,0,0,.03)!important}
@@ -83,7 +84,7 @@
 .unr-garvix-brand{font-weight:700!important;color:#2563eb!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:4px!important;transition:color .15s ease!important}
 .unr-garvix-brand:hover{color:#1d4ed8!important;text-decoration:underline!important}
 .unr-garvix-brand svg{vertical-align:middle!important}
-.LoginView{margin-bottom:90px!important;padding-bottom:20px!important}
-@media(max-width:840px){.unr-login-bottom-footer{position:static!important;width:100%!important;max-width:100%!important;padding:16px 12px!important;margin-top:32px!important;border-radius:0!important}.unr-login-footer-inner{flex-direction:column!important;text-align:center!important;gap:10px!important}.unr-login-footer-copy,.unr-login-footer-dev{white-space:normal!important;text-align:center!important}.LoginView{margin-bottom:20px!important}}
+@media(max-width:768px){#unr-main-footer,.unr-login-bottom-footer{padding:10px 16px!important}.unr-login-footer-inner{flex-direction:column!important;text-align:center!important;gap:6px!important}.unr-login-footer-copy,.unr-login-footer-dev{white-space:normal!important;text-align:center!important;font-size:11px!important}}
+
 
 
