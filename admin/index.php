@@ -45,44 +45,68 @@ $isLoggedIn = !empty($_SESSION['unr_admin_logged']);
 
 <?php if (!$isLoggedIn): ?>
 <!-- ================= LOGIN SCREEN ================= -->
-<div class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-100 p-8">
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 mb-4 ring-8 ring-brand-50/50">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-            </div>
-            <h1 class="text-2xl font-bold text-slate-900"><?= htmlspecialchars($config['company_name']) ?></h1>
-            <p class="text-slate-500 text-sm mt-1">Email Management Admin Portal</p>
-        </div>
-
-        <div id="loginAlert" class="hidden mb-4 p-3.5 rounded-xl text-sm bg-rose-50 text-rose-700 border border-rose-100"></div>
-
-        <form id="loginForm" class="space-y-5">
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Username</label>
-                <input type="text" id="loginUsername" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="Enter username">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Password</label>
-                <div class="relative">
-                    <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="••••••••">
-                    <button type="button" onclick="togglePassVisibility('loginPassword')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-xs font-medium">Show</button>
+<div class="min-h-screen flex flex-col justify-between">
+    <div></div>
+    <div class="w-full max-w-md mx-auto p-4 my-auto">
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-100 p-8">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 mb-4 ring-8 ring-brand-50/50">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
                 </div>
+                <h1 class="text-2xl font-bold text-slate-900"><?= htmlspecialchars($config['company_name']) ?></h1>
+                <p class="text-slate-500 text-sm mt-1">Email Management Admin Portal</p>
             </div>
-            <button type="submit" id="loginSubmitBtn" class="w-full py-3.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-all shadow-md shadow-brand-500/25 flex items-center justify-center gap-2 text-sm">
-                <span>Sign In to Dashboard</span>
-            </button>
-        </form>
 
-        <div class="mt-8 pt-6 border-t border-slate-100 text-center">
-            <a href="/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-brand-600 hover:text-brand-700 font-medium">
-                <span>Open Employee Webmail</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+            <div id="loginAlert" class="hidden mb-4 p-3.5 rounded-xl text-sm bg-rose-50 text-rose-700 border border-rose-100"></div>
+
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Username</label>
+                    <input type="text" id="loginUsername" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="Enter username">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all text-sm" placeholder="••••••••">
+                        <button type="button" onclick="togglePassVisibility('loginPassword')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-xs font-medium">Show</button>
+                    </div>
+                </div>
+                <button type="submit" id="loginSubmitBtn" class="w-full py-3.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-all shadow-md shadow-brand-500/25 flex items-center justify-center gap-2 text-sm">
+                    <span>Sign In to Dashboard</span>
+                </button>
+            </form>
+
+            <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+                <a href="/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-brand-600 hover:text-brand-700 font-medium">
+                    <span>Open Employee Webmail</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
         </div>
     </div>
+
+    <!-- Login Screen Footer -->
+    <footer class="bg-white/90 backdrop-blur-sm border-t border-slate-200/80 py-4 px-4 sm:px-8 text-xs text-slate-500 w-full">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div>
+                &copy; 2026 Unit Nine Private Limited. All rights reserved.
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm">
+                <span>Made with</span>
+                <span class="text-rose-500 text-xs">❤️</span>
+                <span>in India</span>
+            </div>
+            <div class="text-slate-500">
+                Designed &amp; Developed by 
+                <a href="https://garvix.in" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-600 hover:text-brand-700 hover:underline inline-flex items-center gap-1 transition-colors">
+                    <span>GARVIX Software Solutions Pvt Ltd</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <script>
@@ -254,6 +278,27 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
             </div>
         </div>
     </main>
+
+    <!-- Dashboard Footer -->
+    <footer class="bg-white border-t border-slate-200/80 py-4 px-4 sm:px-8 text-xs text-slate-500 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div>
+                &copy; 2026 Unit Nine Private Limited. All rights reserved.
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm">
+                <span>Made with</span>
+                <span class="text-rose-500 text-xs">❤️</span>
+                <span>in India</span>
+            </div>
+            <div class="text-slate-500">
+                Designed &amp; Developed by 
+                <a href="https://garvix.in" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-600 hover:text-brand-700 hover:underline inline-flex items-center gap-1 transition-colors">
+                    <span>GARVIX Software Solutions Pvt Ltd</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <!-- ================= MODALS ================= -->

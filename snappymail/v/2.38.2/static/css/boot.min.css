@@ -74,3 +74,11 @@
 .unr-footer-links{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #f1f5f9}
 .unr-link-admin{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#64748b;text-decoration:none;font-weight:600}
 .unr-link-admin:hover{color:#2563eb;text-decoration:underline}
+.unr-login-bottom-footer{margin-top:24px!important;padding:12px 18px!important;background:#fff!important;border:1px solid #e2e8f0!important;border-radius:16px!important;box-shadow:0 4px 6px -1px rgba(0,0,0,.05)!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;text-align:center!important;font-size:11px!important;color:#64748b!important}
+@media(min-width:640px){.unr-login-bottom-footer{flex-direction:row!important;text-align:left!important;border-radius:9999px!important;padding:8px 20px!important}}
+.unr-login-footer-copy{color:#64748b!important;font-size:11px!important}
+.unr-login-footer-badge{display:inline-flex!important;align-items:center!important;gap:5px!important;background:#f1f5f9!important;padding:3px 12px!important;border-radius:9999px!important;font-weight:500!important;color:#475569!important;font-size:11px!important;box-shadow:0 1px 2px rgba(0,0,0,.04)!important}
+.unr-login-footer-dev{color:#64748b!important;font-size:11px!important}
+.unr-garvix-brand{font-weight:700!important;color:#2563eb!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:4px!important;transition:color .15s ease!important}
+.unr-garvix-brand:hover{color:#1d4ed8!important;text-decoration:underline!important}
+
