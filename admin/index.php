@@ -90,15 +90,15 @@ $isLoggedIn = !empty($_SESSION['unr_admin_logged']);
     <!-- Login Screen Footer -->
     <footer class="bg-white/90 backdrop-blur-sm border-t border-slate-200/80 py-4 px-4 sm:px-8 text-xs text-slate-500 w-full">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div>
+            <div class="sm:whitespace-nowrap">
                 &copy; 2026 Unit Nine Private Limited. All rights reserved.
             </div>
-            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm whitespace-nowrap">
                 <span>Made with</span>
                 <span class="text-rose-500 text-xs">❤️</span>
                 <span>in India</span>
             </div>
-            <div class="text-slate-500">
+            <div class="text-slate-500 sm:whitespace-nowrap">
                 Designed &amp; Developed by 
                 <a href="https://garvix.in" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-600 hover:text-brand-700 hover:underline inline-flex items-center gap-1 transition-colors">
                     <span>GARVIX Software Solutions Pvt Ltd</span>
@@ -282,15 +282,15 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     <!-- Dashboard Footer -->
     <footer class="bg-white border-t border-slate-200/80 py-4 px-4 sm:px-8 text-xs text-slate-500 mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div>
+            <div class="sm:whitespace-nowrap">
                 &copy; 2026 Unit Nine Private Limited. All rights reserved.
             </div>
-            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium text-[11px] shadow-sm whitespace-nowrap">
                 <span>Made with</span>
                 <span class="text-rose-500 text-xs">❤️</span>
                 <span>in India</span>
             </div>
-            <div class="text-slate-500">
+            <div class="text-slate-500 sm:whitespace-nowrap">
                 Designed &amp; Developed by 
                 <a href="https://garvix.in" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-600 hover:text-brand-700 hover:underline inline-flex items-center gap-1 transition-colors">
                     <span>GARVIX Software Solutions Pvt Ltd</span>
