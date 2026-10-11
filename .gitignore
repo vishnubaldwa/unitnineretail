@@ -1,0 +1,4 @@
+admin/config.json
+data/
+*.log
+.DS_Store
