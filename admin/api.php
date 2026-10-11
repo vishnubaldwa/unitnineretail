@@ -44,7 +44,7 @@ if ($action === 'login') {
         $passMatch = true;
     }
 
-    if ($username === $configuredUser && $passMatch) {
+    if (strtolower($username) === strtolower($configuredUser) && $passMatch) {
         $_SESSION['unr_admin_logged'] = true;
         $_SESSION['unr_admin_time'] = time();
         json_resp(true, ['message' => 'Login successful']);
